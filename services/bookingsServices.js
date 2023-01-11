@@ -61,4 +61,24 @@ const Bus=require("../models/busesModel");
 
     }
 };
-module.exports={bookSeat,getBookingsByUserId};
+
+//get-all-bookings
+const getAllBookings=async(req,res)=>{
+    try{
+        const bookings=await Booking.find().populate("bus").populate("user");
+        return res.status(200).send({
+            success:true,
+            message:"Bookings fetched successfully..",
+            data:bookings,
+        })
+    }
+    catch(err){
+        return res.status(500).send({
+            success:false,
+            message:"Bookings fetch failed..",
+            data:err,
+        })
+    }
+}
+
+module.exports={bookSeat,getBookingsByUserId,getAllBookings};
