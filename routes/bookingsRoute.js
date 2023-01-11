@@ -70,5 +70,7 @@ const bookingsService=require("../services/bookingsServices");
 router.post("/book-seat",authMiddleware,bookingsService.bookSeat);
 router.post("/get-bookings-by-user-id",authMiddleware,bookingsService.getBookingsByUserId);
 
+router.post("/get-all-bookings",authMiddleware,bookingsService.getAllBookings);
+
 
 module.exports=router;
