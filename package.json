@@ -2,16 +2,13 @@
   "name": "ticket_booking",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "engines":{
-    "node":"18.12.1",
-    "npm":"8.19.2"
+  "main": "server.js",
+    "scripts": {
+    "start": "node server.js",
+    "server":"nodemon server.js",
+    "client":"npm start --prefix client",
+    "dev":"concurrently \"npm start\" \"npm run client\" "
   },
-    "scripts":{
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node server.js",
-       "dev":"nodemon server.js"
-      },
   "author": "Auxilia",
   "license": "ISC",
   "dependencies": {
