@@ -4,6 +4,8 @@ const app=express();
 require("dotenv").config();
 const connectDB=require("./config/dbConfig");
 
+const path=require("path");
+
 connectDB();
 
 const port=process.env.port || 5000;
@@ -26,6 +28,12 @@ app.use("/api/bookings",require("./routes/bookingsRoute"));
 //     });
 // }
 
+//static files
+app.use(express.static(path.join(__dirname, "./client/build")));
+
+app.get("*",function(req,res){
+    res.sendFile(path.join(__dirname,"./client/build/index.html"));
+});
 
 
 app.listen(port,()=>{
